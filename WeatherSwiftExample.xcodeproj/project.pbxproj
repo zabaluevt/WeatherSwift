@@ -12,6 +12,7 @@
 		778BCEE721A6EC4500784F41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 778BCEE521A6EC4500784F41 /* Main.storyboard */; };
 		778BCEE921A6EC4800784F41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 778BCEE821A6EC4800784F41 /* Assets.xcassets */; };
 		778BCEEC21A6EC4800784F41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 778BCEEA21A6EC4800784F41 /* LaunchScreen.storyboard */; };
+		77C9AA3C21AC50F200B5BEA3 /* JsonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C9AA3B21AC50F200B5BEA3 /* JsonResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		778BCEE821A6EC4800784F41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		778BCEEB21A6EC4800784F41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		778BCEED21A6EC4800784F41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77C9AA3B21AC50F200B5BEA3 /* JsonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		778BCEE021A6EC4500784F41 /* WeatherSwiftExample */ = {
 			isa = PBXGroup;
 			children = (
+				77C9AA3A21AC50B400B5BEA3 /* Model */,
 				778BCEE121A6EC4500784F41 /* AppDelegate.swift */,
 				778BCEE321A6EC4500784F41 /* ViewController.swift */,
 				778BCEE521A6EC4500784F41 /* Main.storyboard */,
@@ -62,6 +65,14 @@
 				778BCEED21A6EC4800784F41 /* Info.plist */,
 			);
 			path = WeatherSwiftExample;
+			sourceTree = "<group>";
+		};
+		77C9AA3A21AC50B400B5BEA3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				77C9AA3B21AC50F200B5BEA3 /* JsonResponse.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				778BCEE421A6EC4500784F41 /* ViewController.swift in Sources */,
+				77C9AA3C21AC50F200B5BEA3 /* JsonResponse.swift in Sources */,
 				778BCEE221A6EC4500784F41 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
