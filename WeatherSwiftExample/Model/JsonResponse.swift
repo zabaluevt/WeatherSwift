@@ -47,11 +47,6 @@ struct List: Codable {
     let snow: Snow?
     let sys: Sys?
     let dtTxt: String?
-
-    enum CodingKeys: String, CodingKey {
-        case dt, main, weather, clouds, wind, snow, sys
-        case dtTxt = "dt_txt"
-    }
 }
 
 struct Clouds: Codable {
@@ -63,38 +58,17 @@ struct MainClass: Codable {
     let seaLevel, grndLevel: Double?
     let humidity: Double?
     let tempKf: Double?
-
-    enum CodingKeys: String, CodingKey {
-        case temp
-        case tempMin = "temp_min"
-        case tempMax = "temp_max"
-        case pressure
-        case seaLevel = "sea_level"
-        case grndLevel = "grnd_level"
-        case humidity
-        case tempKf = "temp_kf"
-    }
 }
 
 struct Snow: Codable {
     let the3H: Double?
-
-    enum CodingKeys: String, CodingKey {
-        case the3H = "3h"
-    }
 }
 
 struct Sys: Codable {
-    let pod: Pod?
     let type, id: Int?
     let message: Double?
     let country: String?
     let sunrise, sunset: Int?
-}
-
-enum Pod: String, Codable {
-    case d = "d"
-    case n = "n"
 }
 
 struct Weather: Codable {
@@ -113,12 +87,6 @@ enum Description: String, Codable {
     case mist = "mist"
 }
 
-//enum MainEnum: String, Codable {
-//    case clear = "Clear"
-//    case clouds = "Clouds"
-//    case snow = "Snow"
-//}
-
 struct Wind: Codable {
     let speed, deg: Double?
 }
@@ -127,12 +95,6 @@ struct Main: Codable {
     let temp: Double?
     let pressure, humidity: Double?
     let tempMin, tempMax: Double?
-    
-    enum CodingKeys: String, CodingKey {
-        case temp, pressure, humidity
-        case tempMin = "temp_min"
-        case tempMax = "temp_max"
-    }
 }
 
 
