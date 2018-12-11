@@ -23,49 +23,49 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Update"/>
                                 <connections>
-                                    <action selector="UpdateButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="njb-dk-kaW"/>
+                                    <action selector="updateButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C9d-gW-LCE"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8CW-dc-vv3">
-                                <rect key="frame" x="16" y="116" width="163.5" height="92"/>
+                                <rect key="frame" x="16" y="116" width="121" height="93.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Температура" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2Q-Xd-705">
-                                        <rect key="frame" x="0.0" y="0.0" width="163.5" height="24"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="121" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Ветер" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bhv-J1-FJD">
-                                        <rect key="frame" x="0.0" y="34" width="163.5" height="24"/>
+                                        <rect key="frame" x="0.0" y="34" width="121" height="24"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Описание" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNx-Vj-sLY">
-                                        <rect key="frame" x="0.0" y="68" width="163.5" height="24"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Влажность " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COU-NM-zTY">
+                                        <rect key="frame" x="0.0" y="68" width="121" height="25.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="meW-iY-Uo5">
-                                <rect key="frame" x="195.5" y="116" width="163.5" height="94"/>
+                                <rect key="frame" x="153" y="116" width="206" height="94"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nyv-GI-ZGh">
-                                        <rect key="frame" x="0.0" y="0.0" width="163.5" height="24"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="206" height="24"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tdE-2r-dGu">
-                                        <rect key="frame" x="0.0" y="35" width="163.5" height="24"/>
+                                        <rect key="frame" x="0.0" y="35" width="206" height="24"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4q5-bf-G7T">
-                                        <rect key="frame" x="0.0" y="70" width="163.5" height="24"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lbA-t3-h9b">
+                                        <rect key="frame" x="0.0" y="70" width="206" height="24"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -81,17 +81,36 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LKG-Rv-BTh">
+                                <rect key="frame" x="24" y="241.5" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="O2M-al-DWD"/>
+                                    <constraint firstAttribute="height" constant="70" id="cPf-8j-gDK"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4q5-bf-G7T">
+                                <rect key="frame" x="126" y="264.5" width="225" height="24"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ZgW-uN-Wo5" firstAttribute="top" secondItem="yzI-aT-yXP" secondAttribute="top" id="09Y-9A-zhm"/>
-                            <constraint firstItem="8CW-dc-vv3" firstAttribute="width" secondItem="meW-iY-Uo5" secondAttribute="width" id="8Gw-xY-Bee"/>
+                            <constraint firstItem="4q5-bf-G7T" firstAttribute="centerY" secondItem="LKG-Rv-BTh" secondAttribute="centerY" id="5r8-MI-t3P"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8CW-dc-vv3" secondAttribute="bottom" priority="100" constant="310" id="7Ol-4Y-lXT"/>
+                            <constraint firstItem="8CW-dc-vv3" firstAttribute="width" relation="lessThanOrEqual" secondItem="meW-iY-Uo5" secondAttribute="width" priority="500" id="8Gw-xY-Bee"/>
                             <constraint firstItem="8CW-dc-vv3" firstAttribute="top" secondItem="ZgW-uN-Wo5" secondAttribute="bottom" constant="32" id="DF2-wn-UbA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="meW-iY-Uo5" secondAttribute="trailing" constant="16" id="DRt-eY-exm"/>
+                            <constraint firstItem="4q5-bf-G7T" firstAttribute="leading" secondItem="LKG-Rv-BTh" secondAttribute="trailing" constant="32" id="Dpe-b3-VOC"/>
                             <constraint firstItem="meW-iY-Uo5" firstAttribute="leading" secondItem="8CW-dc-vv3" secondAttribute="trailing" constant="16" id="QzH-Jw-ODo"/>
                             <constraint firstItem="meW-iY-Uo5" firstAttribute="top" secondItem="yzI-aT-yXP" secondAttribute="bottom" constant="32" id="RgQ-zK-Mag"/>
                             <constraint firstItem="ZgW-uN-Wo5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="Txr-IE-bv0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4q5-bf-G7T" secondAttribute="trailing" constant="24" id="Us3-fX-Oav"/>
+                            <constraint firstItem="LKG-Rv-BTh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="YnH-hc-6d5"/>
                             <constraint firstItem="ZgW-uN-Wo5" firstAttribute="height" secondItem="yzI-aT-yXP" secondAttribute="height" id="bEG-Bs-meD"/>
+                            <constraint firstItem="LKG-Rv-BTh" firstAttribute="top" secondItem="8CW-dc-vv3" secondAttribute="bottom" constant="32" id="bek-Bo-aZQ"/>
                             <constraint firstItem="yzI-aT-yXP" firstAttribute="leading" secondItem="ZgW-uN-Wo5" secondAttribute="trailing" constant="32" id="cAp-l6-Fof"/>
                             <constraint firstItem="yzI-aT-yXP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="osy-dy-b41"/>
                             <constraint firstItem="8CW-dc-vv3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ueC-cM-CBj"/>
@@ -102,7 +121,9 @@
                     <tabBarItem key="tabBarItem" title="Погода сегодня" id="JeE-7d-B3V"/>
                     <connections>
                         <outlet property="descriptionTextField" destination="4q5-bf-G7T" id="kDT-v2-npB"/>
+                        <outlet property="humidityTextField" destination="lbA-t3-h9b" id="Qp3-d6-8UK"/>
                         <outlet property="temperatureTextField" destination="Nyv-GI-ZGh" id="a6Q-wS-rlF"/>
+                        <outlet property="weatherImageView" destination="LKG-Rv-BTh" id="RWZ-66-lB6"/>
                         <outlet property="windSpeedTextField" destination="tdE-2r-dGu" id="H9W-Tj-TEd"/>
                         <outlet property="сityNameTextField" destination="ZgW-uN-Wo5" id="0ki-di-YY2"/>
                     </connections>
@@ -126,8 +147,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5IZ-5f-7nT">
-                                <rect key="frame" x="188" y="88" width="171" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5IZ-5f-7nT">
+                                <rect key="frame" x="188" y="88" width="171" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="171" id="TXE-io-hX8"/>
                                 </constraints>

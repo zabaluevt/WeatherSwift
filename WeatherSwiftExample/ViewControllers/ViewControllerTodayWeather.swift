@@ -14,35 +14,82 @@ class ViewControllerTodayWeather: BaseViewController {
     @IBOutlet var temperatureTextField: UITextField!
     @IBOutlet var windSpeedTextField: UITextField!
     @IBOutlet var descriptionTextField: UITextField!
+    @IBOutlet var humidityTextField: UITextField!
+    @IBOutlet var weatherImageView: UIImageView!
     
-    @IBAction func UpdateButtonTapped(_ sender: Any) {
+    @IBAction func updateButtonTapped(_ sender: Any) {
+        
+        let disableMyButton = sender as? UIButton
+        disableMyButton?.isEnabled = false
         
         guard let city = сityNameTextField.text else {return}
         
         getObjectsFromApi(attribute: .oneDay, city: "\(city)"){ (response) in
             DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+                disableMyButton?.isEnabled = true
                 guard let temp = response?.main?.temp,
                       let windSpeed = response?.wind?.speed,
-                    let description = response?.weather?.first?.description
-                    else { return }
+                      let description = response?.weather?.first?.description,
+                      let humidity = response?.main?.humidity,
+                      let icon = response?.weather?.first?.icon
+                        else {
+                            let alert = UIAlertController(title: "Ошибка", message: "Данных по этому городу нет", preferredStyle: .alert)
+                            let subAlert = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                            alert.addAction(subAlert)
+                            self.present(alert, animated: true, completion: nil)
+                            return
+                }
                 
-                self.TranslateWord(wordRu: description, translations: .engToRu ) {(response) in
+                self.translateWord(wordRu: description, translations: .engToRu ) {(response) in
                     DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+    
                         guard let wordEng = response?.text?.first else {
                             print("Ошибка при десериализации объекта при переводе на английский язык")
                             return
                         }
                         self.descriptionTextField.text = wordEng
+                        UserDefaults.standard.set(wordEng, forKey: "cacheDescription")
                     })
                 }
+                
+                self.temperatureTextField.text = String(format:"%.1f", temp - 273) + " ℃"
+                self.windSpeedTextField.text = String(format:"%.0f", windSpeed) + " м/с"
+                self.humidityTextField.text = String(format:"%.0f", humidity) +  " %"
                 
                 UserDefaults.standard.set(city, forKey: "cacheCity")
                 UserDefaults.standard.set(String(format:"%.1f", temp - 273) + " ℃", forKey: "cacheTemp")
                 UserDefaults.standard.set(String(format:"%.0f", windSpeed) + " м/с", forKey: "cacheWind")
+                UserDefaults.standard.set(String(format:"%.0f", humidity) + " %", forKey: "cacheHumidity")
                 
-                self.temperatureTextField.text = String(format:"%.1f", temp - 273) + " ℃"
-                self.windSpeedTextField.text = String(format:"%.0f", windSpeed) + " м/с"
+                let url = URL(string: "https://openweathermap.org/img/w/\(icon).png")
+                guard let data = try? Data(contentsOf: url!) else {return}
+                
+                //Необходимо доработать сохранение иконки на девайс
+                //self.saveImageDocumentDirectory(icon: icon)
+                //self.getImage()
+                self.weatherImageView.image = UIImage(data: data)
+                UserDefaults.standard.set(data, forKey: "cacheIcon")
+               
             })
+        }
+    }
+    
+    func saveImageDocumentDirectory(icon: String){
+        let fileManager = FileManager.default
+        let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("apple.png")
+        let url = URL(string: "https://openweathermap.org/img/w/\(icon).png")
+        guard let data = try? Data(contentsOf: url!) else {return}
+        
+        fileManager.createFile(atPath: paths, contents: data, attributes: nil)
+    }
+    
+    func getImage(){
+        let fileManager = FileManager.default
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        if fileManager.fileExists(atPath: path){
+            self.weatherImageView.image = UIImage(contentsOfFile: path)
+        }else{
+            print("No Image")
         }
     }
     
@@ -52,8 +99,11 @@ class ViewControllerTodayWeather: BaseViewController {
         сityNameTextField.text = UserDefaults.standard.object(forKey: "cacheCity") as? String
         temperatureTextField.text = UserDefaults.standard.object(forKey: "cacheTemp") as? String
         windSpeedTextField.text = UserDefaults.standard.object(forKey: "cacheWind") as? String
-
-        UpdateButtonTapped(self)
+        descriptionTextField.text = UserDefaults.standard.object(forKey: "cacheDescription") as? String
+        humidityTextField.text = UserDefaults.standard.object(forKey: "cacheHumidity") as? String
+        weatherImageView.image = UserDefaults.standard.object(forKey: "cacheIcon") as? UIImage
+        
+        updateButtonTapped(self)
     }
 }
 
