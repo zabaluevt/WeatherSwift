@@ -162,11 +162,33 @@
                     <tabBarItem key="tabBarItem" title="Погода на 5 дней" id="Ngf-kE-nil"/>
                     <connections>
                         <outlet property="tableView" destination="yUN-hd-plO" id="9H8-mV-vqQ"/>
+                        <segue destination="usF-GN-PQS" kind="modal" identifier="showDetails" id="aUQ-HB-cGd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pkD-jF-Wmb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="408.80000000000001" y="119.1904047976012"/>
+        </scene>
+        <!--View Controller Modal-->
+        <scene sceneID="kcD-Rn-p3B">
+            <objects>
+                <tableViewController id="usF-GN-PQS" customClass="ViewControllerModal" customModule="WeatherSwiftExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Deh-0d-zGc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="usF-GN-PQS" id="woi-aE-7fG"/>
+                            <outlet property="delegate" destination="usF-GN-PQS" id="SJg-gz-LBz"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="tableView" destination="Deh-0d-zGc" id="xi5-lq-gU7"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fbe-7z-gnr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1252" y="119"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="EUW-We-wFy">

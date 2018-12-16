@@ -12,6 +12,9 @@
 		7700DC5E21C517F7002CB846 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7700DC5C21C517F7002CB846 /* TableViewCell.xib */; };
 		7704DF9721B5C3F400FA6184 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7704DF9621B5C3F400FA6184 /* BaseViewController.swift */; };
 		7704DF9921B5CB5500FA6184 /* JsonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7704DF9821B5CB5500FA6184 /* JsonResponse.swift */; };
+		770773B421C68F0F00EEEFEC /* ViewControllerModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770773B321C68F0F00EEEFEC /* ViewControllerModal.swift */; };
+		771667E021C6BD5B00EC386A /* AdditionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771667DE21C6BD5B00EC386A /* AdditionTableViewCell.swift */; };
+		771667E121C6BD5B00EC386A /* AdditionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 771667DF21C6BD5B00EC386A /* AdditionTableViewCell.xib */; };
 		771CF06621B3EE1C002FF084 /* ViewControllerForFiveDaysWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771CF06521B3EE1C002FF084 /* ViewControllerForFiveDaysWeather.swift */; };
 		778BCEE221A6EC4500784F41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778BCEE121A6EC4500784F41 /* AppDelegate.swift */; };
 		778BCEE421A6EC4500784F41 /* ViewControllerTodayWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778BCEE321A6EC4500784F41 /* ViewControllerTodayWeather.swift */; };
@@ -28,6 +31,9 @@
 		7700DC5C21C517F7002CB846 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		7704DF9621B5C3F400FA6184 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		7704DF9821B5CB5500FA6184 /* JsonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonResponse.swift; sourceTree = "<group>"; };
+		770773B321C68F0F00EEEFEC /* ViewControllerModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerModal.swift; sourceTree = "<group>"; };
+		771667DE21C6BD5B00EC386A /* AdditionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionTableViewCell.swift; sourceTree = "<group>"; };
+		771667DF21C6BD5B00EC386A /* AdditionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdditionTableViewCell.xib; sourceTree = "<group>"; };
 		771CF06521B3EE1C002FF084 /* ViewControllerForFiveDaysWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerForFiveDaysWeather.swift; sourceTree = "<group>"; };
 		778BCEDE21A6EC4500784F41 /* WeatherSwiftExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherSwiftExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		778BCEE121A6EC4500784F41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +63,7 @@
 				778BCEE321A6EC4500784F41 /* ViewControllerTodayWeather.swift */,
 				771CF06521B3EE1C002FF084 /* ViewControllerForFiveDaysWeather.swift */,
 				7704DF9621B5C3F400FA6184 /* BaseViewController.swift */,
+				770773B321C68F0F00EEEFEC /* ViewControllerModal.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -116,6 +123,8 @@
 				77FE9A0721BEC9A000F3A837 /* CheckInternet.swift */,
 				7700DC5B21C517F7002CB846 /* TableViewCell.swift */,
 				7700DC5C21C517F7002CB846 /* TableViewCell.xib */,
+				771667DE21C6BD5B00EC386A /* AdditionTableViewCell.swift */,
+				771667DF21C6BD5B00EC386A /* AdditionTableViewCell.xib */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -181,6 +190,7 @@
 				778BCEEC21A6EC4800784F41 /* LaunchScreen.storyboard in Resources */,
 				7700DC5A21C511E2002CB846 /* Background.jpg in Resources */,
 				7700DC5E21C517F7002CB846 /* TableViewCell.xib in Resources */,
+				771667E121C6BD5B00EC386A /* AdditionTableViewCell.xib in Resources */,
 				778BCEE921A6EC4800784F41 /* Assets.xcassets in Resources */,
 				778BCEE721A6EC4500784F41 /* Main.storyboard in Resources */,
 			);
@@ -198,9 +208,11 @@
 				778BCEE421A6EC4500784F41 /* ViewControllerTodayWeather.swift in Sources */,
 				7704DF9921B5CB5500FA6184 /* JsonResponse.swift in Sources */,
 				771CF06621B3EE1C002FF084 /* ViewControllerForFiveDaysWeather.swift in Sources */,
+				770773B421C68F0F00EEEFEC /* ViewControllerModal.swift in Sources */,
 				77FE9A0821BEC9A000F3A837 /* CheckInternet.swift in Sources */,
 				7700DC5D21C517F7002CB846 /* TableViewCell.swift in Sources */,
 				778BCEE221A6EC4500784F41 /* AppDelegate.swift in Sources */,
+				771667E021C6BD5B00EC386A /* AdditionTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +359,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 344A2S9474;
 				INFOPLIST_FILE = WeatherSwiftExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -364,6 +377,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 344A2S9474;
 				INFOPLIST_FILE = WeatherSwiftExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

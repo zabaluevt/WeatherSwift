@@ -2,7 +2,7 @@
 //  CheckInternetConnection.swift
 //  WeatherSwiftExample
 //
-//  Created by Ольга Забалуева on 10.12.2018.
+//  Created by Тимофей Забалуев on 10.12.2018.
 //  Copyright © 2018 Тимофей Забалуев. All rights reserved.
 //
 
