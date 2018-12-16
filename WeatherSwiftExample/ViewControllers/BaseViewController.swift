@@ -69,13 +69,6 @@ class BaseViewController : UIViewController{
 
                     let topAnswerer = try decoder.decode(JsonResponse.self, from: data)
                     completion(topAnswerer)
-                    
-//                    let encoder = JSONEncoder()
-//                    encoder.keyEncodingStrategy = .convertToSnakeCase
-//                    let encoded = try encoder.encode(topAnswerer)
-                    
-                    //print(encoded)
-                    
                 }
                 catch let jsonError {
                     print (jsonError)

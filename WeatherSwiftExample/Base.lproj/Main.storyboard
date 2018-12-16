@@ -136,37 +136,32 @@
         <scene sceneID="IjC-gH-vxp">
             <objects>
                 <viewController id="fGq-lb-yiH" customClass="ViewControllerForFiveDaysWeather" customModule="WeatherSwiftExample" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ou4-OW-jfr">
+                    <view key="view" contentMode="scaleToFill" id="DRY-mt-v2R">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Завтра" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdP-jI-3xp">
-                                <rect key="frame" x="40" y="94" width="64" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5IZ-5f-7nT">
-                                <rect key="frame" x="188" y="88" width="171" height="17"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="171" id="TXE-io-hX8"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yUN-hd-plO">
+                                <rect key="frame" x="0.0" y="70" width="375" height="548"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexTrackingBackgroundColor" red="0.46822990840000001" green="0.69895022829999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="fGq-lb-yiH" id="57P-fQ-A6y"/>
+                                    <outlet property="delegate" destination="fGq-lb-yiH" id="D0t-nc-Wnp"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="5IZ-5f-7nT" firstAttribute="top" secondItem="SmC-Qw-Zww" secondAttribute="top" constant="68" id="Kif-XB-qCO"/>
-                            <constraint firstItem="SmC-Qw-Zww" firstAttribute="trailing" secondItem="5IZ-5f-7nT" secondAttribute="trailing" constant="16" id="YJh-wn-DiM"/>
+                            <constraint firstItem="1t8-2n-asK" firstAttribute="bottom" secondItem="yUN-hd-plO" secondAttribute="bottom" id="GgR-z5-3DS"/>
+                            <constraint firstItem="yUN-hd-plO" firstAttribute="leading" secondItem="1t8-2n-asK" secondAttribute="leading" id="Sjq-im-ZeT"/>
+                            <constraint firstItem="yUN-hd-plO" firstAttribute="top" secondItem="1t8-2n-asK" secondAttribute="top" constant="50" id="e6z-NZ-bNt"/>
+                            <constraint firstItem="1t8-2n-asK" firstAttribute="trailing" secondItem="yUN-hd-plO" secondAttribute="trailing" id="gU4-ms-i51"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="SmC-Qw-Zww"/>
+                        <viewLayoutGuide key="safeArea" id="1t8-2n-asK"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Погода на 5 дней" id="Ngf-kE-nil"/>
                     <connections>
-                        <outlet property="temperatureTomorrow" destination="5IZ-5f-7nT" id="1jI-xT-fT5"/>
+                        <outlet property="tableView" destination="yUN-hd-plO" id="9H8-mV-vqQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pkD-jF-Wmb" userLabel="First Responder" sceneMemberID="firstResponder"/>

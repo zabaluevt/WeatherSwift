@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7700DC5A21C511E2002CB846 /* Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7700DC5921C511E2002CB846 /* Background.jpg */; };
+		7700DC5D21C517F7002CB846 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7700DC5B21C517F7002CB846 /* TableViewCell.swift */; };
+		7700DC5E21C517F7002CB846 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7700DC5C21C517F7002CB846 /* TableViewCell.xib */; };
 		7704DF9721B5C3F400FA6184 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7704DF9621B5C3F400FA6184 /* BaseViewController.swift */; };
 		7704DF9921B5CB5500FA6184 /* JsonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7704DF9821B5CB5500FA6184 /* JsonResponse.swift */; };
 		771CF06621B3EE1C002FF084 /* ViewControllerForFiveDaysWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771CF06521B3EE1C002FF084 /* ViewControllerForFiveDaysWeather.swift */; };
@@ -15,13 +18,14 @@
 		778BCEE721A6EC4500784F41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 778BCEE521A6EC4500784F41 /* Main.storyboard */; };
 		778BCEE921A6EC4800784F41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 778BCEE821A6EC4800784F41 /* Assets.xcassets */; };
 		778BCEEC21A6EC4800784F41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 778BCEEA21A6EC4800784F41 /* LaunchScreen.storyboard */; };
-		77B2906F21B6E2EB0038036F /* WeatherBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 77B2906E21B6E2EB0038036F /* WeatherBackground.jpg */; };
-		77B2907321B6E6C50038036F /* Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 77B2907221B6E6C50038036F /* Background.jpg */; };
 		77E132A521B839E700E248A7 /* JsonTranslateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E132A421B839E700E248A7 /* JsonTranslateResponse.swift */; };
 		77FE9A0821BEC9A000F3A837 /* CheckInternet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FE9A0721BEC9A000F3A837 /* CheckInternet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7700DC5921C511E2002CB846 /* Background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Background.jpg; path = ../../../../../.Trash/Background.jpg; sourceTree = "<group>"; };
+		7700DC5B21C517F7002CB846 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		7700DC5C21C517F7002CB846 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		7704DF9621B5C3F400FA6184 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		7704DF9821B5CB5500FA6184 /* JsonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonResponse.swift; sourceTree = "<group>"; };
 		771CF06521B3EE1C002FF084 /* ViewControllerForFiveDaysWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerForFiveDaysWeather.swift; sourceTree = "<group>"; };
@@ -32,8 +36,6 @@
 		778BCEE821A6EC4800784F41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		778BCEEB21A6EC4800784F41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		778BCEED21A6EC4800784F41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		77B2906E21B6E2EB0038036F /* WeatherBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = WeatherBackground.jpg; path = ../../../../Documents/WeatherBackground.jpg; sourceTree = "<group>"; };
-		77B2907221B6E6C50038036F /* Background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Background.jpg; path = ../../../../../Documents/Background.jpg; sourceTree = "<group>"; };
 		77E132A421B839E700E248A7 /* JsonTranslateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonTranslateResponse.swift; sourceTree = "<group>"; };
 		77FE9A0721BEC9A000F3A837 /* CheckInternet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInternet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,7 +85,6 @@
 				77C9AA3A21AC50B400B5BEA3 /* Model */,
 				771CF06421B3EDE0002FF084 /* ViewControllers */,
 				778BCEE121A6EC4500784F41 /* AppDelegate.swift */,
-				77B2906E21B6E2EB0038036F /* WeatherBackground.jpg */,
 				778BCEE521A6EC4500784F41 /* Main.storyboard */,
 				778BCEE821A6EC4800784F41 /* Assets.xcassets */,
 				778BCEEA21A6EC4800784F41 /* LaunchScreen.storyboard */,
@@ -95,7 +96,7 @@
 		77B2907021B6E2F20038036F /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				77B2907221B6E6C50038036F /* Background.jpg */,
+				7700DC5921C511E2002CB846 /* Background.jpg */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -113,6 +114,8 @@
 			isa = PBXGroup;
 			children = (
 				77FE9A0721BEC9A000F3A837 /* CheckInternet.swift */,
+				7700DC5B21C517F7002CB846 /* TableViewCell.swift */,
+				7700DC5C21C517F7002CB846 /* TableViewCell.xib */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -175,9 +178,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77B2906F21B6E2EB0038036F /* WeatherBackground.jpg in Resources */,
-				77B2907321B6E6C50038036F /* Background.jpg in Resources */,
 				778BCEEC21A6EC4800784F41 /* LaunchScreen.storyboard in Resources */,
+				7700DC5A21C511E2002CB846 /* Background.jpg in Resources */,
+				7700DC5E21C517F7002CB846 /* TableViewCell.xib in Resources */,
 				778BCEE921A6EC4800784F41 /* Assets.xcassets in Resources */,
 				778BCEE721A6EC4500784F41 /* Main.storyboard in Resources */,
 			);
@@ -196,6 +199,7 @@
 				7704DF9921B5CB5500FA6184 /* JsonResponse.swift in Sources */,
 				771CF06621B3EE1C002FF084 /* ViewControllerForFiveDaysWeather.swift in Sources */,
 				77FE9A0821BEC9A000F3A837 /* CheckInternet.swift in Sources */,
+				7700DC5D21C517F7002CB846 /* TableViewCell.swift in Sources */,
 				778BCEE221A6EC4500784F41 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
