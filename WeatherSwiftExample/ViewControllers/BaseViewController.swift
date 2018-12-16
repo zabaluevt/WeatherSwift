@@ -9,9 +9,6 @@
 import Foundation
 import UIKit
 
-// http://api.openweathermap.org/data/2.5/weather?id=499099&APPID=96e1acdb11e7e23103af509121e8c25f
-// http://api.openweathermap.org/data/2.5/forecast?id=499099&APPID=96e1acdb11e7e23103af509121e8c25f
-
 class BaseViewController : UIViewController{
 
     let baseUrl = "http://api.openweathermap.org/data/2.5/"

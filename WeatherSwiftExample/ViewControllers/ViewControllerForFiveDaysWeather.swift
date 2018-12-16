@@ -12,6 +12,7 @@ class ViewControllerForFiveDaysWeather: BaseViewController, UITableViewDataSourc
     
     @IBOutlet var tableView: UITableView!
     
+    var refreshControl = UIRefreshControl()
     var array: [Weather] = []
     var todayFiltered, tommorowFiltered, oneDayLaterFiltered, twoDaysLaterFiltered, threeDaysLatterFiltered: [List]?
     
@@ -54,6 +55,7 @@ class ViewControllerForFiveDaysWeather: BaseViewController, UITableViewDataSourc
             controller.list = model
         }
     }
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return array.count
@@ -64,8 +66,14 @@ class ViewControllerForFiveDaysWeather: BaseViewController, UITableViewDataSourc
             as! TableViewCell
        
        cell.commonInit(image: array[indexPath.row].icon, title: array[indexPath.row].titleString, maxTemp: array[indexPath.row].maxTempString, minTemp: array[indexPath.row].minTempString)
-       
         return cell
+    }
+   
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        //убираем select с выбранной ячейки
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -73,6 +81,22 @@ class ViewControllerForFiveDaysWeather: BaseViewController, UITableViewDataSourc
         
         let nib = UINib(nibName: "TableViewCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "CellIndetifier")
+        makeRequest()
+     
+        //swipe down
+        refreshControl.attributedTitle = NSAttributedString(string: "Refresh")
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+    }
+    
+    @objc func refresh(){
+        array = []
+        makeRequest()
+        tableView.reloadData()
+        refreshControl.endRefreshing()
+    }
+    
+    func makeRequest(){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let today = dateFormatter.string(from: Date())
@@ -80,7 +104,7 @@ class ViewControllerForFiveDaysWeather: BaseViewController, UITableViewDataSourc
         let oneDayLater = dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: 2, to: Date())!)
         let twoDaysLater = dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: 3, to: Date())!)
         let threeDaysLatter = dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: 4, to: Date())!)
-    
+        
         getObjectsFromApi(attribute: .fiveDays, city: "Samara" ) { (response) in
             DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
                 
@@ -89,7 +113,7 @@ class ViewControllerForFiveDaysWeather: BaseViewController, UITableViewDataSourc
                 self.oneDayLaterFiltered = response?.list?.filter({($0.dtTxt?.contains(oneDayLater))!})
                 self.twoDaysLaterFiltered = response?.list?.filter({($0.dtTxt?.contains(twoDaysLater))!})
                 self.threeDaysLatterFiltered = response?.list?.filter({($0.dtTxt?.contains(threeDaysLatter))!})
-               
+                
                 self.addRow(day: today, filtered: self.todayFiltered!)
                 self.addRow(day: tommorow, filtered: self.tommorowFiltered!)
                 self.addRow(day: oneDayLater, filtered: self.oneDayLaterFiltered!)
