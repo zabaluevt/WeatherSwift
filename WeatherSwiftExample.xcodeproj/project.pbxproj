@@ -21,6 +21,7 @@
 		778BCEE721A6EC4500784F41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 778BCEE521A6EC4500784F41 /* Main.storyboard */; };
 		778BCEE921A6EC4800784F41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 778BCEE821A6EC4800784F41 /* Assets.xcassets */; };
 		778BCEEC21A6EC4800784F41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 778BCEEA21A6EC4800784F41 /* LaunchScreen.storyboard */; };
+		77B0143821C812DE00FF6886 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B0143721C812DE00FF6886 /* Alerts.swift */; };
 		77E132A521B839E700E248A7 /* JsonTranslateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77E132A421B839E700E248A7 /* JsonTranslateResponse.swift */; };
 		77FE9A0821BEC9A000F3A837 /* CheckInternet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FE9A0721BEC9A000F3A837 /* CheckInternet.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +43,7 @@
 		778BCEE821A6EC4800784F41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		778BCEEB21A6EC4800784F41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		778BCEED21A6EC4800784F41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77B0143721C812DE00FF6886 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		77E132A421B839E700E248A7 /* JsonTranslateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonTranslateResponse.swift; sourceTree = "<group>"; };
 		77FE9A0721BEC9A000F3A837 /* CheckInternet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInternet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,6 +122,7 @@
 		77FE9A0621BEC96600F3A837 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				77B0143721C812DE00FF6886 /* Alerts.swift */,
 				77FE9A0721BEC9A000F3A837 /* CheckInternet.swift */,
 				7700DC5B21C517F7002CB846 /* TableViewCell.swift */,
 				7700DC5C21C517F7002CB846 /* TableViewCell.xib */,
@@ -212,6 +215,7 @@
 				77FE9A0821BEC9A000F3A837 /* CheckInternet.swift in Sources */,
 				7700DC5D21C517F7002CB846 /* TableViewCell.swift in Sources */,
 				778BCEE221A6EC4500784F41 /* AppDelegate.swift in Sources */,
+				77B0143821C812DE00FF6886 /* Alerts.swift in Sources */,
 				771667E021C6BD5B00EC386A /* AdditionTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

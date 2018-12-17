@@ -22,7 +22,10 @@ class ViewControllerTodayWeather: BaseViewController {
         let disableMyButton = sender as? UIButton
         disableMyButton?.isEnabled = false
         
-        guard let cityName = сityNameTextField.text else {return}
+        guard let cityName = сityNameTextField.text else {
+            Alerts.showAlert(element: self, message: "Введите название города.")
+            return
+        }
         
         getObjectsFromApi(attribute: .oneDay, city: "\(cityName)"){ (response) in
             DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
@@ -33,10 +36,7 @@ class ViewControllerTodayWeather: BaseViewController {
                       let humidity = response?.main?.humidity,
                       let weatherIcon = response?.weather?.first?.icon
                         else {
-                            let alert = UIAlertController(title: "Ошибка", message: "Данных по этому городу нет", preferredStyle: .alert)
-                            let subAlert = UIAlertAction(title: "Ok", style: .default, handler: nil)
-                            alert.addAction(subAlert)
-                            self.present(alert, animated: true, completion: nil)
+                            Alerts.showAlert(element: self, message: "Данных по этому городу нет.")
                             return
                 }
                 
@@ -44,7 +44,7 @@ class ViewControllerTodayWeather: BaseViewController {
                     DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
     
                         guard let wordEng = response?.text?.first else {
-                            print("Ошибка при десериализации объекта при переводе на английский язык")
+                            Alerts.showAlert(element: self, message: "Ошибка при десериализации объекта при переводе на английский язык.")
                             return
                         }
                         self.descriptionTextField.text = wordEng
@@ -62,7 +62,10 @@ class ViewControllerTodayWeather: BaseViewController {
                 UserDefaults.standard.set(String(format:"%.0f", humidity) + " %", forKey: "cacheHumidity")
                 
                 let iconUrl = URL(string: "https://openweathermap.org/img/w/\(weatherIcon).png")
-                guard let data = try? Data(contentsOf: iconUrl!) else {return}
+                guard let data = try? Data(contentsOf: iconUrl!) else {
+                    Alerts.showAlert(element: self, message: "Ошибка получения иконки.")
+                    return
+                }
                 
                 //Необходимо доработать сохранение иконки на девайс
                 //self.saveImageDocumentDirectory(icon: iconUrl)
@@ -77,7 +80,11 @@ class ViewControllerTodayWeather: BaseViewController {
         let fileManager = FileManager.default
         let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("apple.png")
         let iconUrl = URL(string: "https://openweathermap.org/img/w/\(icon).png")
-        guard let data = try? Data(contentsOf: iconUrl!) else {return}
+        guard let data = try? Data(contentsOf: iconUrl!) else {
+            Alerts.showAlert(element: self, message: "Ошибка полуяения иконки.")
+            return
+            
+        }
         
         fileManager.createFile(atPath: paths, contents: data, attributes: nil)
     }
@@ -88,6 +95,7 @@ class ViewControllerTodayWeather: BaseViewController {
         if fileManager.fileExists(atPath: path){
             self.weatherImageView.image = UIImage(contentsOfFile: path)
         } else{
+            Alerts.showAlert(element: self, message: "Иконка не получена.")
             print("No Image")
         }
     }

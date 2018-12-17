@@ -131,7 +131,10 @@ class ViewControllerForFiveDaysWeather: BaseViewController, UITableViewDataSourc
         let iconWeather = filtered.first?.weather?.first?.icon
         let url = URL(string: "https://openweathermap.org/img/w/\(iconWeather!).png")
         
-        guard let data = try? Data(contentsOf: url!) else {return}
+        guard let data = try? Data(contentsOf: url!) else {
+            Alerts.showAlert(element: self, message: "Ошибка получения иконки.")
+            return
+        }
         
         let element  = Weather(icon: UIImage(data: data)!, titleString: day, maxTempString: String(format:"%.1f",maxTemperature), minTempString:String(format:"%.1f", minTemperature))
         
