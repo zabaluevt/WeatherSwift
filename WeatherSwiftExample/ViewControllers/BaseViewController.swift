@@ -90,7 +90,7 @@ class BaseViewController : UIViewController{
             }
         URLSession.shared.dataTask(with: url){ (data, response, error) in
             if error != nil{
-                Alerts.showAlert(element: self, message: "Такого интернет адреса не существует.")
+                Alerts.showAlert(element: self, message: "Ошибка интернета, проверьте подключение.")
                 print(error!)
             }
             else {

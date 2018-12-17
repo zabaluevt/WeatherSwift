@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ViewControllerTodayWeather: BaseViewController {
     
     @IBOutlet var сityNameTextField: UITextField!
@@ -60,9 +61,8 @@ class ViewControllerTodayWeather: BaseViewController {
                     Alerts.showAlert(element: self, message: "Ошибка получения иконки.")
                     return
                 }
-                //Необходимо доработать сохранение иконки на девайс
-                //self.saveImageDocumentDirectory(icon: iconUrl)
-                //self.getImage()
+                
+                self.saveImageDocumentDirectory(data: data)
                 self.weatherImageView.image = UIImage(data: data)
                 
                 let dictionary: [String:Any] = ["cacheCity": cityName, "cacheTemperature": String(format:"%.1f", baseTemperature - 273), "cacheWind": String(format:"%.0f", windSpeed), "cacheHumidity": String(format:"%.0f", humidity)]
@@ -76,25 +76,25 @@ class ViewControllerTodayWeather: BaseViewController {
         }
     }
     
-    func saveImageDocumentDirectory(icon: String){
+    func saveImageDocumentDirectory(data: Data){
         let fileManager = FileManager.default
-        let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("apple.png")
-        let iconUrl = URL(string: "https://openweathermap.org/img/w/\(icon).png")
-        guard let data = try? Data(contentsOf: iconUrl!) else {
-            Alerts.showAlert(element: self, message: "Ошибка получения иконки.")
-            return
-        }
+        let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("icon.jpg")
         
-        fileManager.createFile(atPath: paths, contents: data, attributes: nil)
+        fileManager.createFile(atPath: paths as String, contents: data, attributes: nil)
+        }
+    
+    func getDirectoryPath() -> String {
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
     }
     
-    func getImage(){
+    func getImage() {
         let fileManager = FileManager.default
-        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        if fileManager.fileExists(atPath: path){
-            self.weatherImageView.image = UIImage(contentsOfFile: path)
-        } else{
-            Alerts.showAlert(element: self, message: "Ошибка получения иконки.")
+        let imagePAth = (self.getDirectoryPath() as NSString).appendingPathComponent("icon.jpg")
+        if fileManager.fileExists(atPath: imagePAth){
+            self.weatherImageView.image = UIImage(contentsOfFile: imagePAth)
+        }else{
             print("No Image")
         }
     }
@@ -113,8 +113,9 @@ class ViewControllerTodayWeather: BaseViewController {
             windSpeedTextField.text = cachedWindSpeed + " м/с"
         }
         if let cachedHumidity = UserDefaults.standard.object(forKey: "cacheHumidity") as? String{
-            humidityTextField.text = cachedHumidity
+            humidityTextField.text = cachedHumidity + " %"
         }
+        self.getImage()
         
         updateButtonTapped(self)
     }
