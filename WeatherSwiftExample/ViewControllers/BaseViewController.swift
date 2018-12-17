@@ -10,13 +10,10 @@ import Foundation
 import UIKit
 
 class BaseViewController : UIViewController{
-
-    let baseUrl = "http://api.openweathermap.org/data/2.5/"
-    let appId = "&APPID=96e1acdb11e7e23103af509121e8c25f"
     
-    enum UrlAttribute : String {
-        case oneDay = "weather?q="
-        case fiveDays = "forecast?q="
+    enum FullUrl : String {
+        case oneDay = "http://api.openweathermap.org/data/2.5/weather?q=city&APPID=96e1acdb11e7e23103af509121e8c25f"
+        case fiveDays = "http://api.openweathermap.org/data/2.5/forecast?q=city&APPID=96e1acdb11e7e23103af509121e8c25f"
     }
     
     enum Translations: String {
@@ -24,7 +21,7 @@ class BaseViewController : UIViewController{
         case engToRu = "en-ru"
     }
     
-    func getObjectsFromApi(attribute: UrlAttribute, city: String, completion: @escaping (JsonResponse?) -> Void){
+    func getObjectsFromApi(fullUrl: FullUrl, city: String, completion: @escaping (JsonResponse?) -> Void){
         
         let regex = try! NSRegularExpression(pattern: "[А-я]+", options: [])
         let matches = regex.matches(in: city, options: [], range: NSRange(location: 0, length: city.count))
@@ -39,8 +36,7 @@ class BaseViewController : UIViewController{
                         Alerts.showAlert(element: self, message: "Ошибка при десериализации объекта при переводе.")
                         return
                     }
-                    let fullUrl = "\(self.baseUrl)\(attribute.rawValue)\(cityEng)\(self.appId)"
-                    guard let url = URL(string: fullUrl) else {
+                    guard let url = URL(string: fullUrl.rawValue.replacingOccurrences(of: "city", with: cityEng)) else {
                         Alerts.showAlert(element: self, message: "Ошибка преобразования URL")
                         return }
                     self.addNewSession(url: url, completion: completion)
@@ -48,8 +44,8 @@ class BaseViewController : UIViewController{
             }
         }
         else {
-            let fullUrl = "\(self.baseUrl)\(attribute.rawValue)\(city)\(self.appId)"
-            guard let url = URL(string: fullUrl) else {
+            let changedUrl = fullUrl.rawValue.replacingOccurrences(of: "city", with: city)
+            guard let url = URL(string: changedUrl) else {
                 Alerts.showAlert(element: self, message: "Ошибка преобразования URL")
                 return }
             self.addNewSession(url: url, completion: completion)

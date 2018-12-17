@@ -103,7 +103,7 @@ class ViewControllerForFiveDaysWeather: BaseViewController, UITableViewDataSourc
         let twoDaysLaterDate = dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: 3, to: Date())!)
         let threeDaysLatterDate = dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: 4, to: Date())!)
         
-        getObjectsFromApi(attribute: .fiveDays, city: "Samara" ) { (response) in
+        getObjectsFromApi(fullUrl: .fiveDays, city: "Samara" ) { (response) in
             DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
                 
                 self.todayFiltered = response?.list?.filter({($0.dtTxt?.contains(todayDate))!})

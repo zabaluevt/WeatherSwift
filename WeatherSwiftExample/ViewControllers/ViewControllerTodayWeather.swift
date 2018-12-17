@@ -27,7 +27,7 @@ class ViewControllerTodayWeather: BaseViewController {
             return
         }
         
-        getObjectsFromApi(attribute: .oneDay, city: "\(cityName)"){ (response) in
+        getObjectsFromApi(fullUrl: .oneDay, city: "\(cityName)"){ (response) in
             DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
                 disableMyButton?.isEnabled = true
                 guard let baseTemperature = response?.main?.temp,
