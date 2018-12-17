@@ -110,7 +110,7 @@ class BaseViewController : UIViewController{
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
-        guard CheckInternet.Connection() else{
+        guard CheckInternet.connection() else{
             let alert = UIAlertController(title: "Ошибка", message: "Соединение с интернетом отсутствует", preferredStyle: .alert)
             let subAlert = UIAlertAction(title: "Ok", style: .default, handler: nil)
             alert.addAction(subAlert)

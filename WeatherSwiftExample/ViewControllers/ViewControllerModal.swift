@@ -23,6 +23,7 @@ class ViewControllerModal: BaseViewController, UITableViewDataSource, UITableVie
         let nib = UINib(nibName: "AdditionTableViewCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "AdditionCellIndetifier")
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
     }
