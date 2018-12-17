@@ -38,16 +38,16 @@ class ViewControllerTodayWeather: BaseViewController {
                         else {
                             Alerts.showAlert(element: self, message: "Данных по этому городу нет.")
                             return
-                }
+                        }
                 
                 self.translateWord(wordRu: weatherDescription, translations: .engToRu ) {(response) in
                     DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
-    
                         guard let wordEng = response?.text?.first else {
                             Alerts.showAlert(element: self, message: "Ошибка при десериализации объекта при переводе на английский язык.")
                             return
                         }
                         self.descriptionTextField.text = wordEng
+                        
                         UserDefaults.standard.set(wordEng, forKey: "cacheDescription")
                     })
                 }
@@ -57,9 +57,9 @@ class ViewControllerTodayWeather: BaseViewController {
                 self.humidityTextField.text = String(format:"%.0f", humidity) +  " %"
                 
                 UserDefaults.standard.set(cityName, forKey: "cacheCity")
-                UserDefaults.standard.set(String(format:"%.1f", baseTemperature - 273) + " ℃", forKey: "cacheTemp")
-                UserDefaults.standard.set(String(format:"%.0f", windSpeed) + " м/с", forKey: "cacheWind")
-                UserDefaults.standard.set(String(format:"%.0f", humidity) + " %", forKey: "cacheHumidity")
+                UserDefaults.standard.set(String(format:"%.1f", baseTemperature - 273), forKey: "cacheTemperature")
+                UserDefaults.standard.set(String(format:"%.0f", windSpeed), forKey: "cacheWind")
+                UserDefaults.standard.set(String(format:"%.0f", humidity), forKey: "cacheHumidity")
                 
                 let iconUrl = URL(string: "https://openweathermap.org/img/w/\(weatherIcon).png")
                 guard let data = try? Data(contentsOf: iconUrl!) else {
@@ -81,7 +81,7 @@ class ViewControllerTodayWeather: BaseViewController {
         let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("apple.png")
         let iconUrl = URL(string: "https://openweathermap.org/img/w/\(icon).png")
         guard let data = try? Data(contentsOf: iconUrl!) else {
-            Alerts.showAlert(element: self, message: "Ошибка полуяения иконки.")
+            Alerts.showAlert(element: self, message: "Ошибка получения иконки.")
             return
             
         }
@@ -95,7 +95,7 @@ class ViewControllerTodayWeather: BaseViewController {
         if fileManager.fileExists(atPath: path){
             self.weatherImageView.image = UIImage(contentsOfFile: path)
         } else{
-            Alerts.showAlert(element: self, message: "Иконка не получена.")
+            Alerts.showAlert(element: self, message: "Ошибка получения иконки.")
             print("No Image")
         }
     }
@@ -104,11 +104,18 @@ class ViewControllerTodayWeather: BaseViewController {
         super.viewDidLoad()
         
         сityNameTextField.text = UserDefaults.standard.object(forKey: "cacheCity") as? String
-        temperatureTextField.text = UserDefaults.standard.object(forKey: "cacheTemp") as? String
-        windSpeedTextField.text = UserDefaults.standard.object(forKey: "cacheWind") as? String
         descriptionTextField.text = UserDefaults.standard.object(forKey: "cacheDescription") as? String
-        humidityTextField.text = UserDefaults.standard.object(forKey: "cacheHumidity") as? String
         weatherImageView.image = UserDefaults.standard.object(forKey: "cacheIcon") as? UIImage
+        
+        if let cachedTemperature = UserDefaults.standard.object(forKey: "cacheTemperature") as? String{
+            temperatureTextField.text = cachedTemperature + " ℃"
+        }
+        if let cachedWindSpeed = UserDefaults.standard.object(forKey: "cacheWind") as? String {
+            windSpeedTextField.text = cachedWindSpeed + " м/с"
+        }
+        if let cachedHumidity = UserDefaults.standard.object(forKey: "cacheHumidity") as? String{
+            humidityTextField.text = cachedHumidity
+        }
         
         updateButtonTapped(self)
     }
