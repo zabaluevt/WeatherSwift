@@ -42,13 +42,12 @@ class ViewControllerTodayWeather: BaseViewController {
                 
                 self.translateWord(wordRu: weatherDescription, translations: .engToRu ) {(response) in
                     DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
-                        guard let wordEng = response?.text?.first else {
+                        guard let wordRu = response?.text?.first else {
                             Alerts.showAlert(element: self, message: "Ошибка при десериализации объекта при переводе на английский язык.")
                             return
                         }
-                        self.descriptionTextField.text = wordEng
-                        
-                        UserDefaults.standard.set(wordEng, forKey: "cacheDescription")
+                        self.descriptionTextField.text = wordRu
+                        self.cache(dictionary: ["cacheDescription": wordRu])
                     })
                 }
                 
@@ -56,23 +55,24 @@ class ViewControllerTodayWeather: BaseViewController {
                 self.windSpeedTextField.text = String(format:"%.0f", windSpeed) + " м/с"
                 self.humidityTextField.text = String(format:"%.0f", humidity) +  " %"
                 
-                UserDefaults.standard.set(cityName, forKey: "cacheCity")
-                UserDefaults.standard.set(String(format:"%.1f", baseTemperature - 273), forKey: "cacheTemperature")
-                UserDefaults.standard.set(String(format:"%.0f", windSpeed), forKey: "cacheWind")
-                UserDefaults.standard.set(String(format:"%.0f", humidity), forKey: "cacheHumidity")
-                
                 let iconUrl = URL(string: "https://openweathermap.org/img/w/\(weatherIcon).png")
                 guard let data = try? Data(contentsOf: iconUrl!) else {
                     Alerts.showAlert(element: self, message: "Ошибка получения иконки.")
                     return
                 }
-                
                 //Необходимо доработать сохранение иконки на девайс
                 //self.saveImageDocumentDirectory(icon: iconUrl)
                 //self.getImage()
                 self.weatherImageView.image = UIImage(data: data)
-                UserDefaults.standard.set(data, forKey: "cacheIcon")
+                
+                let dictionary: [String:Any] = ["cacheCity": cityName, "cacheTemperature": String(format:"%.1f", baseTemperature - 273), "cacheWind": String(format:"%.0f", windSpeed), "cacheHumidity": String(format:"%.0f", humidity)]
+                self.cache(dictionary: dictionary)
             })
+        }
+    }
+    func cache(dictionary: [String: Any]){
+        for (key, value) in dictionary{
+            UserDefaults.standard.set(value, forKey: key)
         }
     }
     
@@ -83,7 +83,6 @@ class ViewControllerTodayWeather: BaseViewController {
         guard let data = try? Data(contentsOf: iconUrl!) else {
             Alerts.showAlert(element: self, message: "Ошибка получения иконки.")
             return
-            
         }
         
         fileManager.createFile(atPath: paths, contents: data, attributes: nil)
