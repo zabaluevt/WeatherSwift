@@ -33,8 +33,8 @@ class ViewControllerModal: BaseViewController, UITableViewDataSource, UITableVie
         
         let time:String = list[indexPath.row].dtTxt!.components(separatedBy: " ")[1]
         
-        let icon = list[indexPath.row].weather?.first?.icon
-        let url = URL(string: "https://openweathermap.org/img/w/\(icon!).png")
+        let iconWeather = list[indexPath.row].weather?.first?.icon
+        let url = URL(string: "https://openweathermap.org/img/w/\(iconWeather!).png")
         let data = try? Data(contentsOf: url!)
         
         cell.commonInit(time: time, degrees: String(format:"%.1f", ((list[indexPath.row].main?.temp)! - 273)), icon: UIImage(data: data!)!)

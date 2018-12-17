@@ -13,7 +13,7 @@ class ViewControllerForFiveDaysWeather: BaseViewController, UITableViewDataSourc
     @IBOutlet var tableView: UITableView!
     
     var refreshControl = UIRefreshControl()
-    var array: [Weather] = []
+    var arrayWeather: [Weather] = []
     var todayFiltered, tommorowFiltered, oneDayLaterFiltered, twoDaysLaterFiltered, threeDaysLatterFiltered: [List]?
     
     struct Weather {
@@ -24,25 +24,24 @@ class ViewControllerForFiveDaysWeather: BaseViewController, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         switch indexPath.row {
-        case 0:
-            performSegue(withIdentifier: "showDetails", sender: todayFiltered)
-            break
-        case 1:
-            performSegue(withIdentifier: "showDetails", sender: tommorowFiltered)
-            break
-        case 2:
-            performSegue(withIdentifier: "showDetails", sender: oneDayLaterFiltered)
-            break
-        case 3:
-            performSegue(withIdentifier: "showDetails", sender: twoDaysLaterFiltered)
-            break
-        case 4:
-            performSegue(withIdentifier: "showDetails", sender: threeDaysLatterFiltered)
-            break
-        default:
-            break
+            case 0:
+                performSegue(withIdentifier: "showDetails", sender: todayFiltered)
+                break
+            case 1:
+                performSegue(withIdentifier: "showDetails", sender: tommorowFiltered)
+                break
+            case 2:
+                performSegue(withIdentifier: "showDetails", sender: oneDayLaterFiltered)
+                break
+            case 3:
+                performSegue(withIdentifier: "showDetails", sender: twoDaysLaterFiltered)
+                break
+            case 4:
+                performSegue(withIdentifier: "showDetails", sender: threeDaysLatterFiltered)
+                break
+            default:
+                break
         }
     }
 
@@ -55,17 +54,16 @@ class ViewControllerForFiveDaysWeather: BaseViewController, UITableViewDataSourc
             controller.list = model
         }
     }
-
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return array.count
+        return arrayWeather.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellIndetifier", for: indexPath)
             as! TableViewCell
        
-       cell.commonInit(image: array[indexPath.row].icon, title: array[indexPath.row].titleString, maxTemp: array[indexPath.row].maxTempString, minTemp: array[indexPath.row].minTempString)
+       cell.commonInit(image: arrayWeather[indexPath.row].icon, title: arrayWeather[indexPath.row].titleString, maxTemp: arrayWeather[indexPath.row].maxTempString, minTemp: arrayWeather[indexPath.row].minTempString)
         return cell
     }
    
@@ -90,7 +88,7 @@ class ViewControllerForFiveDaysWeather: BaseViewController, UITableViewDataSourc
     }
     
     @objc func refresh(){
-        array = []
+        arrayWeather = []
         makeRequest()
         tableView.reloadData()
         refreshControl.endRefreshing()
@@ -99,47 +97,45 @@ class ViewControllerForFiveDaysWeather: BaseViewController, UITableViewDataSourc
     func makeRequest(){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        let today = dateFormatter.string(from: Date())
-        let tommorow = dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: 1, to: Date())!)
-        let oneDayLater = dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: 2, to: Date())!)
-        let twoDaysLater = dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: 3, to: Date())!)
-        let threeDaysLatter = dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: 4, to: Date())!)
+        let todayDate = dateFormatter.string(from: Date())
+        let tommorowDate = dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: 1, to: Date())!)
+        let oneDayLaterDate = dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: 2, to: Date())!)
+        let twoDaysLaterDate = dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: 3, to: Date())!)
+        let threeDaysLatterDate = dateFormatter.string(from: Calendar.current.date(byAdding: .day, value: 4, to: Date())!)
         
         getObjectsFromApi(attribute: .fiveDays, city: "Samara" ) { (response) in
             DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
                 
-                self.todayFiltered = response?.list?.filter({($0.dtTxt?.contains(today))!})
-                self.tommorowFiltered = response?.list?.filter({($0.dtTxt?.contains(tommorow))!})
-                self.oneDayLaterFiltered = response?.list?.filter({($0.dtTxt?.contains(oneDayLater))!})
-                self.twoDaysLaterFiltered = response?.list?.filter({($0.dtTxt?.contains(twoDaysLater))!})
-                self.threeDaysLatterFiltered = response?.list?.filter({($0.dtTxt?.contains(threeDaysLatter))!})
+                self.todayFiltered = response?.list?.filter({($0.dtTxt?.contains(todayDate))!})
+                self.tommorowFiltered = response?.list?.filter({($0.dtTxt?.contains(tommorowDate))!})
+                self.oneDayLaterFiltered = response?.list?.filter({($0.dtTxt?.contains(oneDayLaterDate))!})
+                self.twoDaysLaterFiltered = response?.list?.filter({($0.dtTxt?.contains(twoDaysLaterDate))!})
+                self.threeDaysLatterFiltered = response?.list?.filter({($0.dtTxt?.contains(threeDaysLatterDate))!})
                 
-                self.addRow(day: today, filtered: self.todayFiltered!)
-                self.addRow(day: tommorow, filtered: self.tommorowFiltered!)
-                self.addRow(day: oneDayLater, filtered: self.oneDayLaterFiltered!)
-                self.addRow(day: twoDaysLater, filtered: self.twoDaysLaterFiltered!)
-                self.addRow(day: threeDaysLatter, filtered: self.threeDaysLatterFiltered!)
+                self.addRow(day: todayDate, filtered: self.todayFiltered!)
+                self.addRow(day: tommorowDate, filtered: self.tommorowFiltered!)
+                self.addRow(day: oneDayLaterDate, filtered: self.oneDayLaterFiltered!)
+                self.addRow(day: twoDaysLaterDate, filtered: self.twoDaysLaterFiltered!)
+                self.addRow(day: threeDaysLatterDate, filtered: self.threeDaysLatterFiltered!)
             })
         }
     }
     
     func addRow(day: String, filtered: [List]) -> Void {
-        
-        let maxTemp = (filtered.max(by: { (a, b) -> Bool in
-            return a.main!.temp! < b.main!.temp!
+        let maxTemperature = (filtered.max(by: { (item1, item2) -> Bool in
+            return item1.main!.temp! < item2.main!.temp!
         })?.main?.temp)! - 273
-        
-        let minTemp = (filtered.min(by: { (a, b) -> Bool in
-            return a.main!.temp! < b.main!.temp!
+        let minTemperature = (filtered.min(by: { (item1, item2) -> Bool in
+            return item1.main!.temp! < item2.main!.temp!
         })?.main?.temp)! - 273
+        let iconWeather = filtered.first?.weather?.first?.icon
+        let url = URL(string: "https://openweathermap.org/img/w/\(iconWeather!).png")
         
-        let icon = filtered.first?.weather?.first?.icon
-        let url = URL(string: "https://openweathermap.org/img/w/\(icon!).png")
         guard let data = try? Data(contentsOf: url!) else {return}
         
-        let element  = Weather(icon: UIImage(data: data)!, titleString: day, maxTempString: String(format:"%.1f",maxTemp), minTempString:String(format:"%.1f", minTemp))
+        let element  = Weather(icon: UIImage(data: data)!, titleString: day, maxTempString: String(format:"%.1f",maxTemperature), minTempString:String(format:"%.1f", minTemperature))
         
-        self.array.insert(element, at: self.array.count)
+        self.arrayWeather.insert(element, at: self.arrayWeather.count)
         self.tableView.beginUpdates()
         self.tableView.reloadRows(at: self.tableView.indexPathsForVisibleRows ?? [], with: .automatic)
         self.tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .bottom)
